@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="/style/letterbucket.css" />
+  {% block page_style %}{% endblock page_style %}
+  {% endblock style %}
+  {% block title %}
+  <title>: LetterBucket :: {% block page_title %}A Liteweight Content Manager{% endblock page_title %} :</title>
+  {% endblock title %}
+  <meta name="description" content="LetterBucket - A Liteweight Content Manager" />
+  <meta name="author" content="Michael Donnelly, Nicole Freeman, Bryan Cole, Michel Erb, Ryan Goldstone" />
+  {% block script %}
+  {% block page_script %}
+  {% endblock page_script %}
+  {% endblock script %}
+</head>
+<body>
+  {% block flash_messages %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flashedMessages">
+    {% for category, message in messages %}
+    <li class="flashedMessage{{ category | title}}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  {% endblock flash_messages %}
+  {% block content %}
+
+  {% endblock content %}
+  {% block footer %}
+  {% endblock footer %}
+</body>
+</html>

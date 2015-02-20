@@ -1,0 +1,11 @@
+{% extends "base_page.html" %}
+{% block page_title %}Account Log-In{% endblock page_title %}
+{% block content %}
+   <form action='/login' method='POST'>
+     <table>
+       <tr><td>Username:</td><td><input type='text' name='username' size='64' /></td></tr>
+       <tr><td>Password:</td><td><input type='password' name='password' size='64' /></td></tr>
+       <tr><td colspan='2'><input type='submit' name='submit' value='Log In' /></td></tr>
+     </table>
+   </form>
+{% endblock content %}
