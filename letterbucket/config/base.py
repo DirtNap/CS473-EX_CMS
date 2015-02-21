@@ -1,12 +1,15 @@
+import hashlib
 import inspect
-import md5
 import os.path
 
 class BaseConfig(object):
     PROJECT_NAME = 'Letter Bucket'
     PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(inspect.stack()[0][1])))
 
-    SECRET_KEY = str(md5.new(PROJECT_NAME))
+    md5 = hashlib.md5()
+    md5.update(PROJECT_NAME)
+    SECRET_KEY = md5.hexdigest()
+    del md5
 
     @classmethod
     def GetFileSystemPath(cls, name, *paths):
