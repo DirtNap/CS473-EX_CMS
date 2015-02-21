@@ -10,6 +10,7 @@ default_view = flask.Blueprint('letterbucket', __name__,
                                template_folder='templates',  static_folder='static',
                                static_url_path='', url_prefix='')
 from letterbucket.account import view as account_view
+from letterbucket.content import view as content_view
 
 
 def create_application(config_file=None, config_object=None):
@@ -27,8 +28,8 @@ def create_application(config_file=None, config_object=None):
     with app.app_context():
         flask.g.db_handle = db
     app.register_blueprint(default_view)
-    print default_view.url_prefix, default_view.static_url_path
     app.register_blueprint(account_view)
+    app.register_blueprint(content_view)
     return app
 
 

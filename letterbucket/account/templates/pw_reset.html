@@ -1,0 +1,12 @@
+{% extends "base_page.html" %}
+{% block page_title %}Password Reset{% endblock page_title %}
+{% block content %}
+   <form action='/reset' method='POST'>
+     <table>
+       <tr><td>Old Password:</td><td><input type='password' name='old_password' size='64' /></td></tr>
+       <tr><td>New Password:</td><td><input type='password' name='new_password' size='64' /></td></tr>
+       <tr><td>Repeat Password:</td><td><input type='password' name='repeat_password' size='64' /></td></tr>
+       <tr><td colspan='2'><input type='submit' name='submit' value='Change' /></td></tr>
+     </table>
+   </form>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base_page.html" %}
+{% block page_title %}My Account{% endblock page_title %}
+{% block content %}
+<p>Welcome Back, {{ current_user.username }}</p>
+<table>
+  <tr>
+    <td>Real Name</td><td>{{ current_user.name }}</td>
+  </tr>
+  <tr>
+    <td>Email Address</td><td>{{ current_user.email }}</td>
+  </tr>
+  <tr>
+    <td>Account Created</td><td>{{ current_user.created }}</td>
+  </tr>
+  <tr>
+    <td>Blog</td><td><a href="/{{ current_user.blog.path }}">{{ current_user.blog.name }}</a></td>
+  </tr>
+  <tr>
+    <td>Password</td><td><a href="{{ reset_link }}">Reset Password</a></td>
+  </tr>
+{% endblock content %}
