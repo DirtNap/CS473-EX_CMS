@@ -3,6 +3,7 @@ import inspect
 import os.path
 
 class BaseConfig(object):
+    """Sets base options for all configuration objects."""
     PROJECT_NAME = 'Letter Bucket'
     PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(inspect.stack()[0][1])))
 
