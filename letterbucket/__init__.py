@@ -49,4 +49,6 @@ def create_application(config_file=None, config_object=None):
 
 @default_view.route('/')
 def index_page():
+    """Default template.  This is only a placeholder."""
+    # TODO(???): replace this with an aggregate default view from the content module.
     return flask.render_template('index.html')
