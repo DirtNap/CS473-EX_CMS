@@ -7,6 +7,7 @@ from ..content import blogs
 
 view = flask.Blueprint('account', __name__, template_folder='templates')
 login_manager.login_view = '.login_page'
+login_manager.refresh_view = '.login_page'
 
 @view.route('/login')
 def login_page():
