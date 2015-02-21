@@ -17,7 +17,6 @@
   {% endblock script %}
 </head>
 <body>
-  <!-- {{ current_user }} -->
   {% block flash_messages %}<!-- Extend this block to replace flash message display -->
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
