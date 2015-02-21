@@ -10,10 +10,12 @@ login_manager.login_view = '.login_page'
 
 @view.route('/login')
 def login_page():
+    """Display the login form."""
     return flask.render_template('login.html')
 
 @view.route('/login', methods=['POST'])
 def process_login():
+    """Process the login form."""
     username = flask.request.form['username']
     raw_password = flask.request.form['password']
     (errors, user) = ('', None)
@@ -38,6 +40,7 @@ def process_login():
 
 @view.route('/logout', methods=['GET', 'POST'])
 def process_logout():
+    """Utility page to logout the user."""
     login.logout_user()
     return flask.redirect(flask.request.args.get('next') or flask.url_for('.login_page'))
 
@@ -45,17 +48,20 @@ def process_logout():
 @view.route('/profile', methods=['GET'])
 @login.login_required
 def user_profile():
+    """Displays the user's profile information."""
     return flask.render_template('profile.html', reset_link=flask.url_for('.pw_reset_page'))
 
 
 @view.route('/create')
 def create_user_page():
+    """Displays the create user form."""
     if login.current_user.is_authenticated():
         return flask.redirect(flask.url_for('.user_profile'))
     return flask.render_template('create.html')
 
 @view.route('/create', methods=['POST'])
 def process_create_user():
+    """Create new users."""
     ok_to_create = True
     form_keys = ('username', 'email', 'name', 'password', 'blog_path', 'blog_name')
     for k in form_keys:
