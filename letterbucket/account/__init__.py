@@ -109,7 +109,7 @@ def process_create_user():
                               flask.request.form['blog_name'],
                               new_user)
         new_blog.Persist()
-        flask.flash('Account Created.  Please Log In')
+        flask.flash('Account Created. Please Log In')
         return flask.redirect(flask.url_for('.login_page'))
     else:
         # Something failed.  Let the user try again.
