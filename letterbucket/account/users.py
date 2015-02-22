@@ -92,6 +92,8 @@ class User(db.Model):
         Arguments:
           password:  A plaintext password
         """
+        if not password:
+            raise ValueError('Password can not be empty.')
         self.password_hash = GetPasswordHash(password)
 
     def Persist(self, db_session=None):
