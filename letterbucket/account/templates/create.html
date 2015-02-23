@@ -1,15 +1,16 @@
 {% extends "base_page.html" %}
+{% import "form_helper.html" as form_helper %}
 {% block page_title %}Account Creation{% endblock page_title %}
 {% block content %}
    <form action='/create' method='POST'>
      <table>
-       <tr><td>Username:</td><td><input type='text' name='username' size='64' /></td></tr>
-       <tr><td>Name:</td><td><input type='text' name='name' size='64' /></td></tr>
-       <tr><td>E-Mail Address:</td><td><input type='text' name='email' size='64' /></td></tr>
-       <tr><td>Password:</td><td><input type='password' name='password' size='64' /></td></tr>
+       <tr><td>{{ form.username.label }}:</td><td>{{ form.username() }}</td></tr>
+       <tr><td>{{ form.name.label }}:</td><td>{{ form.name() }}</td></tr>
+       <tr><td>{{ form.email.label }}:</td><td>{{ form.email() }}</td></tr>
+       <tr><td>{{ form.password.label }}:</td><td>{{ form.password() }}</td></tr>
        <tr><td colspan=2><hr /></td></tr>
-       <tr><td>Blog Name:</td><td><input type='text' name='blog_name' size='64' /></td></tr>
-       <tr><td>Blog Path:</td><td>letterbucket.net/<input type='text' name='blog_path' size='32' /></td></tr>
+       <tr><td>{{ form.blog_name.label }}:</td><td>{{ form.blog_name() }}</td></tr>
+       <tr><td>{{ form.blog_path.label }}:</td><td>{{ form.blog_path() }}</td></tr>
        <tr><td colspan='2'><input type='submit' name='submit' value='Create User' /></td></tr>
      </table>
    </form>

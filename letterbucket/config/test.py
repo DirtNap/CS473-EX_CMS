@@ -3,6 +3,8 @@ import base
 class TestConfig(base.BaseConfig):
     """A base config for other testing configs."""
     DEBUG = True
+    CSRF_ENABLED = False
+    WTF_CSRF_ENABLED = False
 
 class LocalConfig(TestConfig):
     """A configuration object for using a local SQLite3 database."""

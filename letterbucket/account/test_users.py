@@ -29,7 +29,7 @@ class UserModelTest(unittest.TestCase):
         self.fake_data = faker.Faker()
 
     def testCreateUser(self):
-        test_user_username = self.fake_data.userName()
+        test_user_username = self.fake_data.user_name()
         test_user_name = self.fake_data.name()
         test_user_email = self.fake_data.email()
         test_user_password = self.fake_data.word()
@@ -51,20 +51,20 @@ class UserModelTest(unittest.TestCase):
     def testUserConstraints(self):
         with self.app.test_request_context():
             self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
-            new_user = users.User(self.fake_data.userName(),
+            new_user = users.User(self.fake_data.user_name(),
                                   self.fake_data.email(),
                                   self.fake_data.name(),
                                   self.fake_data.word())
             new_user.Persist()
             self.assertEqual([new_user], users.User.query.all(), 'User should be in the db.')
-            second_user = users.User(self.fake_data.userName(),
+            second_user = users.User(self.fake_data.user_name(),
                                      self.fake_data.email(),
                                      self.fake_data.name(),
                                      self.fake_data.word())
             second_user.username = new_user.username
             self._AssertConstraintError(second_user.Persist, 'UNIQUE', 'username',
                                         msg='Username must be unique.')
-            second_user.username = self.fake_data.userName()
+            second_user.username = self.fake_data.user_name()
             second_user.email = new_user.email
             self._AssertConstraintError(second_user.Persist, 'UNIQUE', 'email',
                                         msg='Email must be unique.')
@@ -84,7 +84,7 @@ class UserModelTest(unittest.TestCase):
     def testUserPasswords(self):
         with self.app.test_request_context():
             test_password = self.fake_data.word()
-            new_user = users.User(self.fake_data.userName(),
+            new_user = users.User(self.fake_data.user_name(),
                                   self.fake_data.email(),
                                   self.fake_data.name(),
                                   test_password)
@@ -99,15 +99,15 @@ class UserModelTest(unittest.TestCase):
             # Make sure null passwords are not allowed.
             self.assertRaises(ValueError, new_user.SetPassword, None)
             self.assertRaises(ValueError, new_user.SetPassword, '')
-            self.assertRaises(ValueError, users.User, self.fake_data.userName(),
+            self.assertRaises(ValueError, users.User, self.fake_data.user_name(),
                               self.fake_data.email(), self.fake_data.name(), None)
-            self.assertRaises(ValueError, users.User, self.fake_data.userName(),
+            self.assertRaises(ValueError, users.User, self.fake_data.user_name(),
                               self.fake_data.email(), self.fake_data.name(), '')
 
     def testUserFlaskLoginInterface(self):
         with self.app.test_request_context():
             test_password = self.fake_data.word()
-            new_user = users.User(self.fake_data.userName(),
+            new_user = users.User(self.fake_data.user_name(),
                                   self.fake_data.email(),
                                   self.fake_data.name(),
                                   self.fake_data.word())

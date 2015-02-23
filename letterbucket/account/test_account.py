@@ -1,4 +1,5 @@
 import faker
+import faker.providers
 import unittest
 import urlparse
 
@@ -9,8 +10,8 @@ from .. import create_application, db
 class AccountTest(unittest.TestCase):
 
     def _CreateTestUser(self):
-        test_username = self.fake_data.userName()
-        test_password = self.fake_data.word()
+        test_username = self.fake_data.user_name()
+        test_password = self.fake_data.password()
         with self.app.app_context():
             test_user = users.User(test_username, self.fake_data.email(),
                                    self.fake_data.name(), test_password)
@@ -35,12 +36,12 @@ class AccountTest(unittest.TestCase):
         self.assertIn('Login Succeeded', rv.data, 'Login Succeeded.')
 
     def testCreate(self):
-        test_username = self.fake_data.userName()
+        test_username = self.fake_data.user_name()
         test_email = self.fake_data.email()
         test_name = self.fake_data.name()
-        test_password = self.fake_data.word()
-        test_blog_name = self.fake_data.catchPhrase()
-        test_blog_path = self.fake_data.uriPage()
+        test_password = self.fake_data.password()
+        test_blog_name = self.fake_data.catch_phrase()
+        test_blog_path = self.fake_data.uri_page()
         rv = self.client.post('/create', data=dict(username=test_username,
                                                    email=test_email,
                                                    name=test_name,
@@ -71,7 +72,7 @@ class AccountTest(unittest.TestCase):
                                                   remember='on'),
                               follow_redirects=True)
         self.assertEquals(200, rv.status_code, 'Log-in OK')
-        new_password = self.fake_data.word()
+        new_password = self.fake_data.password()
         rv = self.client.post('/reset', data=dict(old_password=test_password,
                                                   new_password=new_password,
                                                   repeat_password=new_password),
