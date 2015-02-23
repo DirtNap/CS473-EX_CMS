@@ -143,6 +143,7 @@ def process_pw_reset():
     if ok_to_change:
         login.current_user.SetPassword(flask.request.form['new_password'])
         login.current_user.Persist()
+        flask.flash('Password Updated.')
         return flask.redirect(flask.url_for('.user_profile'))
     else:
         return flask.redirect(flask.url_for('.pw_reset_page'))
