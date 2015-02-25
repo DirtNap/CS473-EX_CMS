@@ -1,0 +1,14 @@
+{% extends "base_page.html" %}
+{% import "form_helper.html" as form_helper %}
+{% block page_title %}Account Log-In{% endblock page_title %}
+{% block content %}
+   <form action='/login' method='POST'>
+     {{ form.hidden_tag() }}
+     <table>
+       <tr><td>{{ form.username.label }}:</td><td>{{ form_helper.with_errors(form.username) }}</td></tr>
+       <tr><td>{{ form.password.label }}:</td><td>{{ form_helper.with_errors(form.password) }}</td></tr>
+       <tr><td>{{ form.remember.label }}:</td><td>{{ form.remember() }}</td></tr>
+       <tr><td colspan='2'>{{ form.submit() }}</td></tr>
+     </table>      
+   </form>
+{% endblock content %}

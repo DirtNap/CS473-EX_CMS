@@ -1,0 +1,13 @@
+{% extends "base_page.html" %}
+{% import "form_helper.html" as form_helper %}
+{% block page_title %}Password Reset{% endblock page_title %}
+{% block content %}
+   <form action='/reset' method='POST'>
+     <table>
+       <tr><td>{{ form.old_password.label }}:</td><td>{{ form_helper.with_errors(form.old_password) }}</td></tr>
+       <tr><td>{{ form.new_password.label }}:</td><td>{{ form_helper.with_errors(form.new_password) }}</td></tr>
+       <tr><td>{{ form.repeat_password.label }}:</td><td>{{ form_helper.with_errors(form.repeat_password) }}</td></tr>
+       <tr><td colspan='2'><input type='submit' name='submit' value='Change' /></td></tr>
+     </table>
+   </form>
+{% endblock content %}

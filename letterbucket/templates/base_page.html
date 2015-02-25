@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {% block style %}<!-- Extend this block to completely replace style elements -->
+  <link rel="stylesheet" type="text/css" href="/style/letterbucket.css" />
+  {% block page_style %}{% endblock page_style %}<!-- Extend this block to add to the style -->
+  {% endblock style %}
+  {% block title %}<!-- Extend this block to completely replace the page title -->
+  <title>: LetterBucket :: {% block page_title %}A Liteweight Content Manager{% endblock page_title %}<!-- Extend this block to replace the sub-title --> :</title>
+  {% endblock title %}
+  <meta name="description" content="LetterBucket - A Liteweight Content Manager" />
+  <meta name="author" content="Michael Donnelly, Nicole Freeman, Bryan Cole, Michel Erb, Ryan Goldstone" />
+  {% block script %}<!-- Extend this block to completely replace script elements -->
+  {% block page_script %}<!-- Extend this block to add to the scripts -->
+  {% endblock page_script %}
+  {% endblock script %}
+</head>
+<body>
+  {% block flash_messages %}<!-- Extend this block to replace flash message display -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flashedMessages">
+    {% for category, message in messages %}
+    <li class="flashedMessage{{ category | title}}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+  {% endblock flash_messages %}
+  {% block content %}<!-- Extend this block to completely replace page content -->
+
+  {% endblock content %}
+  {% block footer %}<!-- Extend this block to completely replace page footer -->
+  {% endblock footer %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base_page.html" %}
+{% import "form_helper.html" as form_helper %}
+{% block page_title %}Account Creation{% endblock page_title %}
+{% block content %}
+   <form action='/create' method='POST'>
+     <table>
+       <tr><td>{{ form.username.label }}:</td><td>{{ form.username() }}</td></tr>
+       <tr><td>{{ form.name.label }}:</td><td>{{ form.name() }}</td></tr>
+       <tr><td>{{ form.email.label }}:</td><td>{{ form.email() }}</td></tr>
+       <tr><td>{{ form.password.label }}:</td><td>{{ form.password() }}</td></tr>
+       <tr><td colspan=2><hr /></td></tr>
+       <tr><td>{{ form.blog_name.label }}:</td><td>{{ form.blog_name() }}</td></tr>
+       <tr><td>{{ form.blog_path.label }}:</td><td>{{ form.blog_path() }}</td></tr>
+       <tr><td colspan='2'><input type='submit' name='submit' value='Create User' /></td></tr>
+     </table>
+   </form>
+{% endblock content %}
