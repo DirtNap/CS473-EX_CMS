@@ -1,5 +1,4 @@
 import faker
-import hashlib
 import unittest
 from sqlalchemy.exc import IntegrityError
 
