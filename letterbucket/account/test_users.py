@@ -10,6 +10,7 @@ class UserModelTest(unittest.TestCase):
 
     def _AssertConstraintError(self, callable, type, column, msg='', *args, **kwargs):
         re = ''.join((r'.*\b', type.upper(), r'\b.*\b', column.lower(), r'\b.*'))
+        callable(*args, **kwargs)
         if msg:
             try:
                 with self.assertRaisesRegexp(IntegrityError, re):
