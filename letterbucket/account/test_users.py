@@ -1,24 +1,13 @@
 import faker
 import unittest
-from sqlalchemy.exc import IntegrityError
 
 import users
 from ..config import test
+from ..utilities import testing
 from .. import create_application, db
 
-class UserModelTest(unittest.TestCase):
 
-    def _AssertConstraintError(self, callable, type, column, msg='', *args, **kwargs):
-        re = ''.join((r'.*\b', type.upper(), r'\b.*\b', column.lower(), r'\b.*'))
-        if msg:
-            try:
-                with self.assertRaisesRegexp(IntegrityError, re):
-                    callable(*args, **kwargs)
-            except AssertionError as ex:
-                raise AssertionError('%s (%s)' % (msg, ex.message))
-        else:
-            self.assertRaisesRegexp(IntegrityError, re, callable, *args, **kwargs)
-        db.session.rollback()
+class UserModelTest(testing.DbModelTestCase):
 
     def setUp(self):
         self.config_class = test.MemoryConfig
@@ -61,19 +50,23 @@ class UserModelTest(unittest.TestCase):
                                      self.fake_data.name(),
                                      self.fake_data.word())
             second_user.username = new_user.username
-            self._AssertConstraintError(second_user.Persist, 'UNIQUE', 'username',
+            self._AssertConstraintError(db, self.UNIQUE_ASSERTION_RE, 'username',
+                                        second_user.Persist,
                                         msg='Username must be unique.')
             second_user.username = self.fake_data.user_name()
             second_user.email = new_user.email
-            self._AssertConstraintError(second_user.Persist, 'UNIQUE', 'email',
+            self._AssertConstraintError(db, self.UNIQUE_ASSERTION_RE, 'email',
+                                        second_user.Persist,
                                         msg='Email must be unique.')
             second_user.email = self.fake_data.email()
             second_user.name = None
-            self._AssertConstraintError(second_user.Persist, 'NOT NULL', 'name',
+            self._AssertConstraintError(db, self.NOT_NULL_ASSERTION_RE, 'name',
+                                        second_user.Persist,
                                         msg='Name must not be null.')
             second_user.name = self.fake_data.name()
             second_user.password_hash = None
-            self._AssertConstraintError(second_user.Persist, 'NOT NULL', 'password_hash',
+            self._AssertConstraintError(db, self.NOT_NULL_ASSERTION_RE, 'password_hash',
+                                        second_user.Persist,
                                         msg='Password must not be null.')
             second_user.SetPassword(self.fake_data.word())
             second_user.Persist()
