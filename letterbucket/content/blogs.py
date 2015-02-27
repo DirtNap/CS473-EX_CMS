@@ -64,3 +64,8 @@ class Blog(db.Model):
 
     def __repr__(self):
         return "%s: %s (%s)" % (self.name, self.path, self.owner)
+
+		
+class Post(db.Model):
+	pass
+	
