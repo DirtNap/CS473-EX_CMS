@@ -31,15 +31,25 @@ ul.field_errors {
 	font-size: 8pt; 
 }
 
-.login_form { 
+div.login_form { 
 	margin-right: 500px; 
 	margin-top: 100px;
 	height: 200px;
 	background-color: #fff;
-	opacity: .6;
+	opacity: .75;
 	width: 100%;
 
 }
+div.create_form {
+	margin-right: 500px; 
+	margin-top: 100px;
+	height: 310px;
+	background-color: #fff;
+	opacity: .75;
+	width: 100%;
+
+}
+
 
 form {
 	padding-top: 25px;
@@ -54,6 +64,38 @@ form label {
 
 }
 
-form input #username {
-	background-color: #000;
+form input#username 
+form input#password {
+ width: 400px;
+  background-color: #4b4b4b;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+#submit {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;
+}
+
+#createUser {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;	
 }
