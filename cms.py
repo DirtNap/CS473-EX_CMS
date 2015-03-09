@@ -10,6 +10,8 @@ from letterbucket.content import blogs
 # TODO(dirtnap): Make this argument based
 config = test.LocalConfig
 
+config.Initialize()
+
 # Get a letterbucket application
 app = create_application(config_object=config)
 

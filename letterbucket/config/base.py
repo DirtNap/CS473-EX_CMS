@@ -28,3 +28,12 @@ class BaseConfig(object):
         parts = list(paths)
         parts.append(name)
         return os.path.join(cls.PROJECT_ROOT, *parts)
+
+    @classmethod
+    def Initialize(cls):
+        """Perform any necssary set-up before the config class is to be used.
+
+        In general, this should be overridden by cconfigs which need to perform
+        some code operations before use.
+        """
+        pass
