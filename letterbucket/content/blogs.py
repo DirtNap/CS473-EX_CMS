@@ -66,6 +66,3 @@ class Blog(db.Model):
         return "%s: %s (%s)" % (self.name, self.path, self.owner)
 
 		
-class Post(db.Model):
-	pass
-	
