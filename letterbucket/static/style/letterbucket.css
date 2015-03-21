@@ -47,15 +47,22 @@ div.create_form {
 	background-color: #fff;
 	opacity: .75;
 	width: 100%;
-
 }
 
+div.display_region {
+	margin-right: 500px; 
+	margin-top: 100px;
+	height: 395px;
+	background-color: #fff;
+	opacity: .75;
+	width: 100%;
+        overflow: auto;
+}
 
 form {
 	padding-top: 25px;
 	margin-right: auto;
 	margin-left: 400px;
-	
 }
 
 form label {

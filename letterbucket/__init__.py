@@ -64,4 +64,8 @@ def index_page(path, post):
     all_posts = query.order_by(posts.Post.pub_date.desc()).all()
     if not all_posts:
         flask.abort(404)
-    return flask.render_template('index.html', posts=all_posts)
+    should_truncate = (post == 0)
+    print should_truncate
+    return flask.render_template('index.html',
+                                 posts=all_posts,
+                                 truncate=should_truncate)

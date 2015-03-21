@@ -1,6 +1,7 @@
 {% extends "base_page.html" %}
 
 {% block content %}
+<div class="display_region">
 {% for post in posts %}
 {% set post_uri = '/' ~ post.blog.path ~ '/' ~ post.id %}
 {% set read_more_link = '&nbsp;...<a href="' ~ post_uri ~ '">Read More</a>' %}
@@ -10,8 +11,13 @@
     <th>{{ post.pub_date}}</th>
   </tr>
   <tr>
+    {% if truncate %}
     <td colspan="3">{{ post.body|truncate(200, False, read_more_link)|safe }}</td>
+    {% else %}
+    <td colspan="3">{{ post.body }}</td>
+    {% endif %}
   </tr>
 </table>
 {% endfor %}
+</div>
 {% endblock content %}
