@@ -1,10 +1,13 @@
-import faker
-import unittest
-
-import posts
+from .. import create_application
+from .. import db
+from ..account import users
 from ..config import test
 from ..utilities import testing
-from .. import create_application, db
+import blogs
+import datetime
+import faker
+import posts
+import unittest
 
 class PostStatusModelTest(testing.DbModelTestCase):
 
@@ -48,6 +51,44 @@ class PostStatusModelTest(testing.DbModelTestCase):
                              'Description should not be overwritten by None.')
             self.assertEqual(test_post_status, posts.PostStatus.GetByCode(test_status_code),
                              'Retrieve by code should match.')
+
+    def testGetPostById(self):
+        with self.app.test_request_context():
+            self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
+            test_user_username = self.fake_data.user_name()
+            test_user_name = self.fake_data.name()
+            test_user_email = self.fake_data.email()
+            test_user_password = self.fake_data.word()
+
+            new_user = users.User(test_user_username,
+                                  test_user_email,
+                                  test_user_name,
+                                  test_user_password)
+            new_user.Persist()
+
+            self.assertEqual([], blogs.Blog.query.all(), 'Should be no blogs in the db.')
+            test_blog_path = self.fake_data.word()
+            test_blog_name = self.fake_data.name()
+            new_blog = blogs.Blog(test_blog_path,
+                                  test_blog_name,
+                                  new_user)
+            new_blog.Persist()
+
+            """self.assertEqual([], blogs.PostStatus.query.all(), 'Should be no post status in the db.')
+            test_post_status_code = self.fake_data.word()
+            test_post_status_description = self.fake_data.text()
+            new_post_status = blogs.PostStatus(test_post_status_code,
+                                               test_post_status_description)            
+            new_post_status.Persist()"""
+
+            self.assertEqual([], posts.Post.query.all(), 'Should be no posts in the db.')
+            test_post_title = self.fake_data.word()
+            test_post_body = self.fake_data.text()
+            new_post = posts.Post(new_blog,
+                                  test_post_title,
+                                  test_post_body)
+
+            new_post.Persist()
 
 class PostModelTest(testing.DbModelTestCase):
     # TODO(bryanxcole): Implement tests for the Post Model
