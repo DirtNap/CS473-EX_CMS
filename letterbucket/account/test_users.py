@@ -86,8 +86,8 @@ class UserModelTest(testing.DbModelTestCase):
             new_user.Persist()            
             good_user = users.User.GetById(new_user.id)
             bad_user = users.User.GetById(new_user.id + 1)
-            self.assertEqual([new_user], [good_user], 'User should be the same as in the db.')
-            self.assertNotEqual([new_user], [bad_user], 'User should not be the same as in the db.')
+            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
+            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
 
     def testGetUserByUsername(self):
         test_user_username = self.fake_data.user_name()
@@ -103,8 +103,8 @@ class UserModelTest(testing.DbModelTestCase):
             new_user.Persist()            
             good_user = users.User.GetByUsername(test_user_username)
             bad_user = users.User.GetByUsername(self.fake_data.user_name())
-            self.assertEqual([new_user], [good_user], 'User should be the same as in the db.')
-            self.assertNotEqual([new_user], [bad_user], 'User should not be the same as in the db.')
+            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
+            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
 
     def testGetUserByEmail(self):
         test_user_username = self.fake_data.user_name()
@@ -120,8 +120,8 @@ class UserModelTest(testing.DbModelTestCase):
             new_user.Persist()            
             good_user = users.User.GetByEmail(test_user_email)
             bad_user = users.User.GetByEmail(self.fake_data.email())
-            self.assertEqual([new_user], [good_user], 'User should be the same as in the db.')
-            self.assertNotEqual([new_user], [bad_user], 'User should not be the same as in the db.')
+            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
+            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
     
     def testUserPasswords(self):
         with self.app.test_request_context():
