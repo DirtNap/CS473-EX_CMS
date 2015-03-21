@@ -1,5 +1,5 @@
 import flask
-
+import posts
 import blogs
 
 # View for content.
