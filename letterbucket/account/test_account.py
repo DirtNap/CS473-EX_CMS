@@ -105,20 +105,6 @@ class LoginGateTest(unittest.TestCase):
         self.assertEquals(1, len(query['next']), '"next" has one value.')
         self.assertEquals('/profile', query['next'][0], 'Redirect to profile page.')
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    def testProfile(self):
-        rv = self.client.get('/reset')
-        self.assertEquals(302, rv.status_code, 'Response should be a redirect.')
-        location = urlparse.urlparse(rv.headers.get('Location'))
-        self.assertEquals('/login', location.path, 'Redirect to login page.')
-        query = urlparse.parse_qs(location.query)
-        self.assertIn('next', query, 'Query string contains the "next" parameter.')
-        self.assertEquals(1, len(query['next']), '"next" has one value.')
-        self.assertEquals('/reset', query['next'][0], 'Redirect to reset page.')
-=======
-=======
->>>>>>> 1689aaa24d0c021b48091c84dfd25ddbab72ef2b
      def testReset(self):
          rv = self.client.get('/reset')
          self.assertEquals(302, rv.status_code, 'Response should be a redirect.')
@@ -128,4 +114,3 @@ class LoginGateTest(unittest.TestCase):
          self.assertIn('next', query, 'Query string contains the "next" parameter.')
          self.assertEquals(1, len(query['next']), '"next" has one value.')
          self.assertEquals('/reset', query['next'][0], 'Redirect to reset page.')
->>>>>>> Fixed name collision in unit test

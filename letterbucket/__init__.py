@@ -14,15 +14,7 @@ default_view = flask.Blueprint('letterbucket', __name__,
                                static_url_path='', url_prefix='')
 from letterbucket.account import view as account_view
 from letterbucket.content import view as content_view
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 from letterbucket.content import posts, blogs
->>>>>>> Added view by blog and post
-=======
-from letterbucket.content import posts, blogs
->>>>>>> 1689aaa24d0c021b48091c84dfd25ddbab72ef2b
 
 def create_application(config_file=None, config_object=None):
     """Factory for creating applications
@@ -60,13 +52,6 @@ def create_application(config_file=None, config_object=None):
 @default_view.route('/<path>/<int:post>')
 def index_page(path, post):
     """Default template.  This is only a placeholder."""
-<<<<<<< HEAD
-<<<<<<< HEAD
-    # TODO(???): replace this with an aggregate default view from the content module.
-    return flask.render_template('index.html')
-=======
-=======
->>>>>>> 1689aaa24d0c021b48091c84dfd25ddbab72ef2b
     published = posts.PostStatus('Published')
     query = posts.Post.query.filter_by(status_id=published.id)
     if path:
@@ -80,4 +65,3 @@ def index_page(path, post):
     if not all_posts:
         flask.abort(404)
     return flask.render_template('index.html', posts=all_posts)
->>>>>>> Added view by blog and post
