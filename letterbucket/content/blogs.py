@@ -8,7 +8,7 @@ class Blog(db.Model):
     name = db.Column(db.String(256), nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True)  # Only one blog per user, please
-    posts = db.relationship('Post', backref='Blog')
+    posts = db.relationship('Post', backref='blog')
 
     @staticmethod
     def GetByPath(path):
@@ -65,5 +65,3 @@ class Blog(db.Model):
 
     def __repr__(self):
         return "%s: %s (%s)" % (self.name, self.path, self.owner)
-
-		
