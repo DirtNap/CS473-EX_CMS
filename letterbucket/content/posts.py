@@ -108,12 +108,12 @@ class Post(db.Model):
           body:  The body for the post.
         """
         self.blog = blog
-	self.title = title
-	self.body = body
-	if not status:
-            self.status = PostStatus('Draft')
-	else:
-            self.status = status
+ 	      self.title = title
+      	self.body = body
+  	    if not status:
+          self.status = PostStatus('Draft')
+  	    else:
+          self.status = status
 
     def Persist(self, db_session=None):
         """Store the current version of the post in the database.
