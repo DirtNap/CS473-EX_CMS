@@ -46,7 +46,7 @@ class PostStatusModelTest(testing.DbModelTestCase):
             test_post_status = posts.PostStatus(test_status_code, description=None)
             self.assertEqual(test_status_description, test_post_status.description,
                              'Description should not be overwritten by None.')
-            self.assertEqual(test_post_status, posts.PostStatus.GetStatusByCode(test_status_code),
+            self.assertEqual(test_post_status, posts.PostStatus.GetByCode(test_status_code),
                              'Retrieve by code should match.')
 
 class PostModelTest(testing.DbModelTestCase):

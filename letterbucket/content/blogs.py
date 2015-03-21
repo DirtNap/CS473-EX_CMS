@@ -21,6 +21,7 @@ class Blog(db.Model):
         """
         return Blog.query.get(int(id))
 
+    @staticmethod
     def GetByPath(path):
         """Get the blog which resides at the given path.
 
@@ -31,6 +32,7 @@ class Blog(db.Model):
         """
         return Blog.query.filter_by(path=path).first()
 
+    @staticmethod
     def GetByName(name):
         """Get the blog which resides at the given name.
 
@@ -39,7 +41,7 @@ class Blog(db.Model):
 
         Returns:  the Blog object with the corresponding name, or None
         """
-        return Blog.query.filter_by(name=name)
+        return Blog.query.filter_by(name=name).all()
     
     def __init__(self, path, name, owner):
         """Create a new blog.

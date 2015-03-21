@@ -10,7 +10,7 @@ class PostStatus(db.Model):
     def __new__(cls, code=None, * args, ** kwargs):
         self = None
         if code:
-            self = cls.GetStatusByCode(code)
+            self = cls.GetByCode(code)
         if not self:
             self = super(PostStatus, cls).__new__(cls, code, * args, ** kwargs)
         return self
@@ -31,6 +31,7 @@ class PostStatus(db.Model):
         """
         return PostStatus.query.get(int(id))
 
+    @staticmethod
     def GetByCode(code):
         """Get the post status which resides at the given code.
 
