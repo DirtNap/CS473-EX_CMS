@@ -3,7 +3,7 @@ html {
 }
 
 div.main_wrapper{
-	background-image: url('https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09');
+	background-image: url('/images/background_desk.jpg');
 	background-repeat: no-repeat;
 	height: 900px;
 	margin-top: -50px;

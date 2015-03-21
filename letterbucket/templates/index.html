@@ -3,25 +3,20 @@
 {% block content %}
 <div class="main_wrapper">
    <div class="logo">
-    <img src="https://41.media.tumblr.com/fcfab96dd3fd2feb05705df21e520457/tumblr_nkhvx5zXsi1qh0miho1_250.png">
+    <img src="/images/letterbucket_logo.png">
    </div>
-<<<<<<< HEAD
- </div>
-=======
 </div>
 {% for post in posts %}
+{% set post_uri = '/' ~ post.blog.path ~ '/' ~ post.id %}
+{% set read_more_link = '&nbsp;...<a href="' ~ post_uri ~ '">Read More</a>' %}
 <table>
-  <tr><th>{{ post.title }}</th>
+  <tr><th><a href="{{ post_uri }}">{{ post.title }}</a></th>
     <th>Posted by {{ post.blog.owner.name }} in <a href="/{{ post.blog.path }}">{{ post.blog.name }}</a></th>
     <th>{{ post.pub_date}}</th>
   </tr>
   <tr>
-    <td colspan="3">{{ post.body }}</td>
-  </tr>
-  <tr>
-    <td colspan="2">&nbsp;</td><td><a href="/{{ post.blog.path }}/{{ post.id }}">Read More</a></td>
+    <td colspan="3">{{ post.body|truncate(200, False, read_more_link)|safe }}</td>
   </tr>
 </table>
 {% endfor %}
->>>>>>> Added view by blog and post
 {% endblock content %}
