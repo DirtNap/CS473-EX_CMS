@@ -32,7 +32,7 @@ class PostStatus(db.Model):
     
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    blog = db.relationship('Blog', uselist=False, backref='id')
+    blog = db.Column(d.Integer, db.ForeignKey('blog.id')
     title = db.Column(db.Text, nullable=False)
     body = db.Column(db.Text,nullable=False)
     create_date = db.Column(db.DateTime,nullable=False,default=datetime.datetime.utcnow)
