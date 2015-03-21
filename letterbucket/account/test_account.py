@@ -104,7 +104,7 @@ class LoginGateTest(unittest.TestCase):
          self.assertEquals(1, len(query['next']), '"next" has one value.')
          self.assertEquals('/profile', query['next'][0], 'Redirect to profile page.')
 
-     def testProfile(self):
+     def testReset(self):
          rv = self.client.get('/reset')
          self.assertEquals(302, rv.status_code, 'Response should be a redirect.')
          location = urlparse.urlparse(rv.headers.get('Location'))
