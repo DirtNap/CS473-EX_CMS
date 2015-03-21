@@ -83,7 +83,7 @@ class Post(db.Model):
         Returns:  the Post objects with the corresponding blog id, or None
         """
         return Post.query.filter_by(blog_id=id).all()
-    
+
     @staticmethod
     def GetByBlogPath(path):
         """Get the post which resides at the given blog path.
@@ -95,8 +95,18 @@ class Post(db.Model):
         """
         blog = blogs.Blog.GetByPath(path)
         return Post.query.filter_by(blog_id=blog.id).all()
-    
+
     def __init__(self, blog, title, body, status=None):
+        """Create a new post.
+
+        Note:  This post is not persisted to the database until Persist()
+               is explicitly called.
+
+        Arguments:
+          blog: The Blog of the post. The Blog must be persisted.
+          title:  The desired title for display of the post.
+          body:  The body for the post.
+        """
         self.blog = blog
 	self.title = title
 	self.body = body
@@ -104,6 +114,30 @@ class Post(db.Model):
             self.status = PostStatus('Draft')
 	else:
             self.status = status
+
+    def Persist(self, db_session=None):
+        """Store the current version of the post in the database.
+
+        NOTE:  This method commits the database session given by
+               db_session.  By default, this will be the session at
+               db.session.  If this transaction should be isolated,
+               an explicitly created session must be provided.
+
+        Arguments:
+          db_session:  Optional.  A Flask SQLAlchemy session to use.
+        """
+        if not db_session:
+            db_session = db.session
+        if not self.IsPersisted():
+            db_session.add(self)
+        db_session.commit()
+
+    def IsPersisted(self):
+        """Indicates whether the post has been persisted.
+
+        Returns:  boolean indicating whether the post was persisted.
+        """
+        return (self.id is not None)
 
     def __str__(self):
         return self.name

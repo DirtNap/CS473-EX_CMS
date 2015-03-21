@@ -52,7 +52,7 @@ class Blog(db.Model):
         Arguments:
           path:  The desired path for display of the blog.  Must be unique.
           name:  The name for the blog.
-          owner:  A User object who owns the blog.  The User must be persisted.
+          owner:  A User object who owns the blog.  The Blog must be persisted.
         """
         self.path = path
         self.name = name
