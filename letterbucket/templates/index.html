@@ -1,11 +1,6 @@
 {% extends "base_page.html" %}
 
 {% block content %}
-<div class="main_wrapper">
-   <div class="logo">
-    <img src="/images/letterbucket_logo.png">
-   </div>
-</div>
 {% for post in posts %}
 {% set post_uri = '/' ~ post.blog.path ~ '/' ~ post.id %}
 {% set read_more_link = '&nbsp;...<a href="' ~ post_uri ~ '">Read More</a>' %}
