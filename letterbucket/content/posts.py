@@ -43,13 +43,14 @@ class Post(db.Model):
     last_modified_date = db.Column(db.DateTime)
         
         
-    def __init__(self,title,body,status=None):
-        self.title = title
-		self.body = body
-		if not status:
-			self.status='Draft'
-		else
-			self.status=status
+    def __init__(self,blog,title,body,status=None):
+        self.blog = blog
+	self.title = title
+	self.body = body
+	if not status:
+		self.status= PostStatus('Draft')
+	else
+		self.status=PostStatus(status)
 
     def __str__(self):
         return self.name
