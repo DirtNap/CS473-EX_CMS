@@ -106,6 +106,7 @@ class LoginGateTest(unittest.TestCase):
         self.assertEquals('/profile', query['next'][0], 'Redirect to profile page.')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def testProfile(self):
         rv = self.client.get('/reset')
         self.assertEquals(302, rv.status_code, 'Response should be a redirect.')
@@ -116,6 +117,8 @@ class LoginGateTest(unittest.TestCase):
         self.assertEquals(1, len(query['next']), '"next" has one value.')
         self.assertEquals('/reset', query['next'][0], 'Redirect to reset page.')
 =======
+=======
+>>>>>>> 1689aaa24d0c021b48091c84dfd25ddbab72ef2b
      def testReset(self):
          rv = self.client.get('/reset')
          self.assertEquals(302, rv.status_code, 'Response should be a redirect.')
