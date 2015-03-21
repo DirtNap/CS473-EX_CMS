@@ -8,12 +8,16 @@
 </div>
 {% for post in posts %}
 <table>
-  <tr><th>{{ post.title }}</th><th>Posted by {{ post.blog.owner.name }} in {{ post.blog.name }}</th>
+  <tr><th>{{ post.title }}</th>
+    <th>Posted by {{ post.blog.owner.name }} in <a href="/{{ post.blog.path }}">{{ post.blog.name }}</a></th>
     <th>{{ post.pub_date}}</th>
   </tr>
   <tr>
     <td colspan="3">{{ post.body }}</td>
   </tr>
-  </table>
+  <tr>
+    <td colspan="2">&nbsp;</td><td><a href="/{{ post.blog.path }}/{{ post.id }}">Read More</a></td>
+  </tr>
+</table>
 {% endfor %}
 {% endblock content %}
