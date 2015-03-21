@@ -1,5 +1,5 @@
-import datetime
 from .. import db
+import datetime
 
 class Blog(db.Model):
     """Represents a blog model in the database."""
@@ -11,6 +11,16 @@ class Blog(db.Model):
     posts = db.relationship('Post', backref='blog')
 
     @staticmethod
+    def GetById(id):
+        """Get the blog which resides at the given id.
+
+        Arguments:
+          id:  the id of the blog.
+
+        Returns:  the Blog object with the primary key id, or None
+        """
+        return Blog.query.get(int(id))
+
     def GetByPath(path):
         """Get the blog which resides at the given path.
 
@@ -21,6 +31,16 @@ class Blog(db.Model):
         """
         return Blog.query.filter_by(path=path).first()
 
+    def GetByName(name):
+        """Get the blog which resides at the given name.
+
+        Arguments:
+          name:  the name of the blog.
+
+        Returns:  the Blog object with the corresponding name, or None
+        """
+        return Blog.query.filter_by(name=name)
+    
     def __init__(self, path, name, owner):
         """Create a new blog.
 

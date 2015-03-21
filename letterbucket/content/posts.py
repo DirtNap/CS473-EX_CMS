@@ -1,5 +1,5 @@
-import datetime
 from .. import db
+import datetime
 
 class PostStatus(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -7,12 +7,12 @@ class PostStatus(db.Model):
     description = db.Column(db.String(256), nullable=True)
     posts_in_status = db.relationship('Post', backref='status')
 
-    def __new__(cls, code=None, *args, **kwargs):
+    def __new__(cls, code=None, * args, ** kwargs):
         self = None
         if code:
             self = cls.GetStatusByCode(code)
         if not self:
-            self = super(PostStatus, cls).__new__(cls, code, *args, **kwargs)
+            self = super(PostStatus, cls).__new__(cls, code, * args, ** kwargs)
         return self
 
     def __init__(self, code, description=None):
@@ -21,7 +21,24 @@ class PostStatus(db.Model):
             self.description = description
 
     @staticmethod
-    def GetStatusByCode(code):
+    def GetById(id):
+        """Get the post status which resides at the given id.
+
+        Arguments:
+          id:  the id of the post status.
+
+        Returns:  the PostStatus object with the primary key id, or None
+        """
+        return PostStatus.query.get(int(id))
+
+    def GetByCode(code):
+        """Get the post status which resides at the given code.
+
+        Arguments:
+          code:  the code of the post status.
+
+        Returns:  the PostStatus object with the corresponding code, or None
+        """
         return PostStatus.query.filter_by(code=code.upper()).first()
 
     def __str__(self):
@@ -36,16 +53,35 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'))
     title = db.Column(db.Text, nullable=False)
-    body = db.Column(db.Text,nullable=False)
-    create_date = db.Column(db.DateTime,nullable=False,default=datetime.datetime.utcnow)
+    body = db.Column(db.Text, nullable=False)
+    create_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     post_date = db.Column(db.DateTime)
     pub_date = db.Column(db.DateTime)
     status_id = db.Column(db.Integer, db.ForeignKey('post_status.id'))
-    last_modified_by = db.Column(db.Integer,nullable=True)
+    last_modified_by = db.Column(db.Integer, nullable=True)
     last_modified_date = db.Column(db.DateTime)
 
+    def GetById(id):
+        """Get the post which resides at the given id.
 
-    def __init__(self,blog,title,body,status=None):
+        Arguments:
+          id:  the id of the post.
+
+        Returns:  the Post object with the primary key id, or None
+        """
+        return Post.query.get(int(id))
+
+    def GetByBlogId(id):
+        """Get the post which resides at the given blog id.
+
+        Arguments:
+          id:  the blog id of the post.
+
+        Returns:  the Post object with the corresponding blog id, or None
+        """
+        return Post.query.filter_by(blog_id=id)
+    
+    def __init__(self, blog, title, body, status=None):
         self.blog = blog
 	self.title = title
 	self.body = body
