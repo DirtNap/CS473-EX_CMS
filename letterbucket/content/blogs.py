@@ -59,7 +59,7 @@ class Blog(db.Model):
         self.owner_id = owner.id
 
     def Persist(self, db_session=None):
-        """Store the current version of the user in the database.
+        """Store the current version of the blog in the database.
 
         NOTE:  This method commits the database session given by
                db_session.  By default, this will be the session at
