@@ -74,13 +74,6 @@ class PostStatusModelTest(testing.DbModelTestCase):
                                   new_user)
             new_blog.Persist()
 
-            """self.assertEqual([], blogs.PostStatus.query.all(), 'Should be no post status in the db.')
-            test_post_status_code = self.fake_data.word()
-            test_post_status_description = self.fake_data.text()
-            new_post_status = blogs.PostStatus(test_post_status_code,
-                                               test_post_status_description)            
-            new_post_status.Persist()"""
-
             self.assertEqual([], posts.Post.query.all(), 'Should be no posts in the db.')
             test_post_title = self.fake_data.word()
             test_post_body = self.fake_data.text()
