@@ -5,5 +5,23 @@
    <div class="logo">
     <img src="https://41.media.tumblr.com/fcfab96dd3fd2feb05705df21e520457/tumblr_nkhvx5zXsi1qh0miho1_250.png">
    </div>
+<<<<<<< HEAD
  </div>
+=======
+</div>
+{% for post in posts %}
+<table>
+  <tr><th>{{ post.title }}</th>
+    <th>Posted by {{ post.blog.owner.name }} in <a href="/{{ post.blog.path }}">{{ post.blog.name }}</a></th>
+    <th>{{ post.pub_date}}</th>
+  </tr>
+  <tr>
+    <td colspan="3">{{ post.body }}</td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td><td><a href="/{{ post.blog.path }}/{{ post.id }}">Read More</a></td>
+  </tr>
+</table>
+{% endfor %}
+>>>>>>> Added view by blog and post
 {% endblock content %}
