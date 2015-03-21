@@ -42,7 +42,7 @@ class Blog(db.Model):
         Returns:  the Blog object with the corresponding name, or None
         """
         return Blog.query.filter_by(name=name).all()
-    
+
     def __init__(self, path, name, owner):
         """Create a new blog.
 
