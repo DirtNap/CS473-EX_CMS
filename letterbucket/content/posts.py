@@ -32,25 +32,27 @@ class PostStatus(db.Model):
     
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    author = db.Column(db.Integer, db.ForeignKey('user.id'))
+    blog = db.relationship('Blog', uselist=False, backref='id')
     title = db.Column(db.Text, nullable=False)
     body = db.Column(db.Text,nullable=False)
-    create_date = db.Column(db.DateTime,nullable=False)
+    create_date = db.Column(db.DateTime,nullable=False,default=datetime.datetime.utcnow)
     post_date = db.Column(db.DateTime)
     pub_date = db.Column(db.DateTime)
     status_id = db.Column(db.Integer, db.ForeignKey('post_status.id'))
     last_modified_by = db.Column(db.Integer,nullable=True)
     last_modified_date = db.Column(db.DateTime)
         
-
         
-    def __init__():
-        pass
+    def __init__(self,title,body,status=None):
+        self.title = title
+		self.body = body
+		if not status:
+			self.status='Draft'
+		else
+			self.status=status
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         return '%s: %s (%s)' % (self.name, self.path, self.owner)
-
-        
