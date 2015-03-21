@@ -2,6 +2,11 @@
 {% import "form_helper.html" as form_helper %}
 {% block page_title %}Account Log-In{% endblock page_title %}
 {% block content %}
+   <div class="main_wrapper">
+   <div class="logo">
+    <img src="https://41.media.tumblr.com/fcfab96dd3fd2feb05705df21e520457/tumblr_nkhvx5zXsi1qh0miho1_250.png">
+   </div>
+   <div class="login_form">
    <form action='/login' method='POST'>
      {{ form.hidden_tag() }}
      <table>
@@ -11,4 +16,6 @@
        <tr><td colspan='2'>{{ form.submit() }}</td></tr>
      </table>      
    </form>
+   </div>
+   </div>
 {% endblock content %}

@@ -1,4 +1,101 @@
-li.flashedMessageError { color: red; font-weight: 800; }
-li.flashedMessageMessage { font-weight: 800; }
+html { 
+	font-family: 'Raleway', sans-serif; 
+}
 
-ul.field_errors { color: red; font-size: 8pt; }
+div.main_wrapper{
+	background-image: url('https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09');
+	background-repeat: no-repeat;
+	height: 900px;
+	margin-top: -50px;
+	width: 100%;
+	background-size: 100%;
+}
+
+div.logo {
+	width: 200px; 
+	margin-left: 40%; 
+	padding-top: 200px;
+	}
+
+li.flashedMessageError { 
+	color: red; 
+	font-weight: 800; 
+}
+
+li.flashedMessageMessage { 
+	font-weight: 800; 
+}
+
+ul.field_errors { 
+	color: red; 
+	font-size: 8pt; 
+}
+
+div.login_form { 
+	margin-right: 500px; 
+	margin-top: 100px;
+	height: 200px;
+	background-color: #fff;
+	opacity: .75;
+	width: 100%;
+
+}
+div.create_form {
+	margin-right: 500px; 
+	margin-top: 100px;
+	height: 310px;
+	background-color: #fff;
+	opacity: .75;
+	width: 100%;
+
+}
+
+
+form {
+	padding-top: 25px;
+	margin-right: auto;
+	margin-left: 400px;
+	
+}
+
+form label {
+	font-family: 'Raleway', sans-serif; 
+	font-weight: 700;
+
+}
+
+form input#username 
+form input#password {
+ width: 400px;
+  background-color: #4b4b4b;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+#submit {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;
+}
+
+#createUser {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;	
+}
