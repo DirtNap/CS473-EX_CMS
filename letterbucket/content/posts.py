@@ -54,12 +54,12 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'))
     title = db.Column(db.Text, nullable=False)
-    body = db.Column(db.Text,nullable=False)
-    create_date = db.Column(db.DateTime,nullable=False,default=datetime.datetime.utcnow)
+    body = db.Column(db.Text, nullable=False)
+    create_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     post_date = db.Column(db.DateTime)
     pub_date = db.Column(db.DateTime)
     status_id = db.Column(db.Integer, db.ForeignKey('post_status.id'))
-    last_modified_by = db.Column(db.Integer,nullable=True)
+    last_modified_by = db.Column(db.Integer, nullable=True)
     last_modified_date = db.Column(db.DateTime)
 
     @staticmethod
