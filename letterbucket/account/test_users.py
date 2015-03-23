@@ -72,57 +72,7 @@ class UserModelTest(testing.DbModelTestCase):
             second_user.Persist()
             self.assertEqual([new_user, second_user], users.User.query.all(), 'Both users should be in the db.')
 
-    def testGetUserById(self):
-        test_user_username = self.fake_data.user_name()
-        test_user_name = self.fake_data.name()
-        test_user_email = self.fake_data.email()
-        test_user_password = self.fake_data.word()
-        with self.app.test_request_context():
-            self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
-            new_user = users.User(test_user_username,
-                                  test_user_email,
-                                  test_user_name,
-                                  test_user_password)
-            new_user.Persist()            
-            good_user = users.User.GetById(new_user.id)
-            bad_user = users.User.GetById(new_user.id + 1)
-            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
-            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
 
-    def testGetUserByUsername(self):
-        test_user_username = self.fake_data.user_name()
-        test_user_name = self.fake_data.name()
-        test_user_email = self.fake_data.email()
-        test_user_password = self.fake_data.word()
-        with self.app.test_request_context():
-            self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
-            new_user = users.User(test_user_username,
-                                  test_user_email,
-                                  test_user_name,
-                                  test_user_password)
-            new_user.Persist()            
-            good_user = users.User.GetByUsername(test_user_username)
-            bad_user = users.User.GetByUsername(self.fake_data.user_name())
-            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
-            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
-
-    def testGetUserByEmail(self):
-        test_user_username = self.fake_data.user_name()
-        test_user_name = self.fake_data.name()
-        test_user_email = self.fake_data.email()
-        test_user_password = self.fake_data.word()
-        with self.app.test_request_context():
-            self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
-            new_user = users.User(test_user_username,
-                                  test_user_email,
-                                  test_user_name,
-                                  test_user_password)
-            new_user.Persist()            
-            good_user = users.User.GetByEmail(test_user_email)
-            bad_user = users.User.GetByEmail(self.fake_data.email())
-            self.assertEqual(new_user, good_user, 'User should be the same as in the db.')
-            self.assertNotEqual(new_user, bad_user, 'User should not be the same as in the db.')
-    
     def testUserPasswords(self):
         with self.app.test_request_context():
             test_password = self.fake_data.word()
