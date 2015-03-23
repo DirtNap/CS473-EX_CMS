@@ -96,7 +96,7 @@ class Post(db.Model):
         blog = blogs.Blog.GetByPath(path)
         return Post.query.filter_by(blog_id=blog.id).all()
 
-    def __init__(self,blog,title,body,status=None):
+    def __init__(self, blog, title, body, status=None):
         """Create a new post.
 
         Note:  This post is not persisted to the database until Persist()
