@@ -1,7 +1,6 @@
-from .. import db
-from .. import login_manager
-import datetime
 import hashlib
+import datetime
+from .. import db, login_manager
 
 def GetPasswordHash(password):
     """Get the md5 encoded hash of an arbitrary string, for use as a password.

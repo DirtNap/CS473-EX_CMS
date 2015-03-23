@@ -8,15 +8,15 @@ class DbModelTestCase(unittest.TestCase):
     NOT_NULL_ASSERTION_RE = r'\bNOT\b.*?\bNULL\b'
     UNIQUE_ASSERTION_RE = r'\bUNIQUE\b'
 
-    def _AssertConstraintError(self, db, type_re, column, callable, msg='', * args, ** kwargs):
+    def _AssertConstraintError(self, db, type_re, column, callable, msg='', *args, **kwargs):
         re = ''.join((r'^(?=.*', type_re, r')(?=.*\b', column.lower(), r'\b)(?i)'))
         if msg:
             try:
                 with self.assertRaisesRegexp(IntegrityError, re):
-                    callable(*args, ** kwargs)
+                    callable(*args, **kwargs)
             except AssertionError as ex:
                 raise AssertionError('%s (%s)' % (msg, ex.message))
         else:
-            self.assertRaisesRegexp(IntegrityError, re, callable, * args, ** kwargs)
+            self.assertRaisesRegexp(IntegrityError, re, callable, *args, **kwargs)
         db.session.rollback()
 

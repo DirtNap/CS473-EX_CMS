@@ -1,12 +1,11 @@
-from . import users
-from . import view
-from .. import create_application
-from .. import db
-from ..config import test
 import faker
 import faker.providers
 import unittest
 import urlparse
+
+from . import view, users
+from ..config import test
+from .. import create_application, db
 
 class AccountTest(unittest.TestCase):
 
