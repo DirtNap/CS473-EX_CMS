@@ -1,10 +1,10 @@
-from .. import create_application
-from .. import db
-from ..config import test
-from ..utilities import testing
 import faker
 import unittest
+
 import users
+from ..config import test
+from ..utilities import testing
+from .. import create_application, db
 
 
 class UserModelTest(testing.DbModelTestCase):

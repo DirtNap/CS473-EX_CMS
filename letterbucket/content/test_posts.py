@@ -1,13 +1,11 @@
-from .. import create_application
-from .. import db
+import faker
+import unittest
+
+import blogs, posts
 from ..account import users
 from ..config import test
 from ..utilities import testing
-import blogs
-import datetime
-import faker
-import posts
-import unittest
+from .. import create_application, db
 
 class PostStatusModelTest(testing.DbModelTestCase):
 
@@ -80,8 +78,6 @@ class PostStatusModelTest(testing.DbModelTestCase):
             new_post = posts.Post(new_blog,
                                   test_post_title,
                                   test_post_body)
-
-            new_post.Persist()
 
 class PostModelTest(testing.DbModelTestCase):
     # TODO(bryanxcole): Implement tests for the Post Model
