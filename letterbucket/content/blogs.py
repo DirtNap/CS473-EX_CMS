@@ -11,6 +11,17 @@ class Blog(db.Model):
     posts = db.relationship('Post', backref='blog')
 
     @staticmethod
+    def GetById(id):
+        """Get the blog which resides at the given id.
+
+        Arguments:
+          id:  the id of the blog.
+
+        Returns:  the Blog object with the primary key id, or None
+        """
+        return Blog.query.get(int(id))
+
+    @staticmethod
     def GetByPath(path):
         """Get the blog which resides at the given path.
 
@@ -21,6 +32,17 @@ class Blog(db.Model):
         """
         return Blog.query.filter_by(path=path).first()
 
+    @staticmethod
+    def GetByName(name):
+        """Get the blog which resides at the given name.
+
+        Arguments:
+          name:  the name of the blog.
+
+        Returns:  the Blog object with the corresponding name, or None
+        """
+        return Blog.query.filter_by(name=name).all()
+    
     def __init__(self, path, name, owner):
         """Create a new blog.
 
@@ -30,14 +52,14 @@ class Blog(db.Model):
         Arguments:
           path:  The desired path for display of the blog.  Must be unique.
           name:  The name for the blog.
-          owner:  A User object who owns the blog.  The User must be persisted.
+          owner:  A User object who owns the blog.  The Blog must be persisted.
         """
         self.path = path
         self.name = name
         self.owner_id = owner.id
 
     def Persist(self, db_session=None):
-        """Store the current version of the user in the database.
+        """Store the current version of the blog in the database.
 
         NOTE:  This method commits the database session given by
                db_session.  By default, this will be the session at
