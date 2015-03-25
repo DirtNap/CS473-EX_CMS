@@ -2,7 +2,9 @@ import faker
 import unittest
 
 import users
-from .. db
+from ..config import test
+from ..utilities import testing
+from .. import create_application, db
 
 import blogs
 from ..config import test
