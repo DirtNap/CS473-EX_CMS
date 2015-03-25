@@ -1,9 +1,6 @@
 import faker
 import unittest
 
-import posts
-from .. db
-
 import users
 from .. db
 
