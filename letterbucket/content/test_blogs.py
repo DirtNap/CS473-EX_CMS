@@ -46,7 +46,7 @@ class BlogModelTest(testing.DbModelTestCase):
             self.assertEqual([], blogs.Blog.query.all(), 'Should be no blogs in the db.')
             new_blog = blogs.Blog(self.fake_data.path(),
                                   self.fake_data.name(),
-                                  self.fake_data.user_id()
+                                  self.fake_data.user_id())
             # new_blog.Persist()
             self.assertEqual([new_blog], blogs.Blog.query.all(), 'Blog should be in the db.')
             second_blog = blogs.Blog(self.fake_data.path(),
