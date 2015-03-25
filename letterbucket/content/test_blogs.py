@@ -1,5 +1,5 @@
 import faker
-import unittest
+import unittest from .. import db
 import blogs
 import posts
 
