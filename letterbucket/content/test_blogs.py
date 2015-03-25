@@ -9,10 +9,12 @@ from .. import create_application, db
 """
 
 import blogs
+from .. import db
+"""
 from ..config import test
 from ..utilities import testing
 from .. import create_application, db
-
+"""
 
 class BlogModelTest(testing.DbModelTestCase):
 
