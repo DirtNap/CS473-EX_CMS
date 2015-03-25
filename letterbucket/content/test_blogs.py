@@ -51,7 +51,7 @@ class BlogModelTest(testing.DbModelTestCase):
             self.assertEqual([new_blog], blogs.Blog.query.all(), 'Blog should be in the db.')
             second_blog = blogs.Blog(self.fake_data.path(),
                                      self.fake_data.name(),
-                                     self.fake_data.user_id()
+                                     self.fake_data.user_id())
 
             second_blog.path = new_blog.path
             self._AssertConstraintError(second_blog.Persist, 'UNIQUE', 'path',
