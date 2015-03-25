@@ -1,9 +1,9 @@
 import faker
-import unittest from .. db
-import blogs
+import unittest
+#import blogs
 import posts
 
-import users
+import blogs
 from ..config import test
 from ..utilities import testing
 from .. import create_application, db
