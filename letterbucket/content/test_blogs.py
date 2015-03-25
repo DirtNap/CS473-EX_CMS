@@ -61,7 +61,7 @@ class BlogModelTest(testing.DbModelTestCase):
 			second_blog.owner_id = new_user.id            
             self._AssertConstraintError(second_blog.Persist, 'UNIQUE', 'owner_id',
                                         msg='User_ID must be unique.')
-			second_blog.owner_id = self.fake_data.second_user.id()            
+			second_blog.owner_id = second_user.id()            
 
             second_user.name = None
             self._AssertConstraintError(second_user.Persist, 'NOT NULL', 'name',
