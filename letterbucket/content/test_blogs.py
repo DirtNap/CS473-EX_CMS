@@ -1,20 +1,9 @@
 import faker
 import unittest
 
-"""
-import users
-from ..config import test
-from ..utilities import testing
-from .. import create_application, db
-"""
-
 import blogs
-from .. import db
-"""
-from ..config import test
-from ..utilities import testing
-from .. import create_application, db
-"""
+
+from account import users
 
 class BlogModelTest(testing.DbModelTestCase):
 
@@ -51,16 +40,23 @@ class BlogModelTest(testing.DbModelTestCase):
     def testBlogConstraints(self):
         with self.app.test_request_context():
             self.assertEqual([], blogs.Blog.query.all(), 'Should be no blogs in the db.')
+            new_user = users.User(self.fake_data.user_name(),
+                                  self.fake_data.email(),
+                                  self.fake_data.name(),
+                                  self.fake_data.word())
+            new_user.Persist()            
+            
             new_blog = blogs.Blog(self.fake_data.path(),
                                   self.fake_data.name(),
                                   self.fake_data.user_id())
-            # new_blog.Persist()
             self.assertEqual([new_blog], blogs.Blog.query.all(), 'Blog should be in the db.')
+          
             second_blog = blogs.Blog(self.fake_data.path(),
                                      self.fake_data.name(),
                                      self.fake_data.user_id())
-
             second_blog.path = new_blog.path
+            
+            
             self._AssertConstraintError(second_blog.Persist, 'UNIQUE', 'path',
                                         msg='Path must be unique.')
             second_blog.path = self.fake_data.uri_path()
