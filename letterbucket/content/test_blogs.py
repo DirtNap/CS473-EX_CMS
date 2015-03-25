@@ -1,7 +1,11 @@
 import faker
 import unittest
-#import blogs
+
 import posts
+from .. db
+
+import users
+from .. db
 
 import blogs
 from ..config import test
