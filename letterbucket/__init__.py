@@ -69,3 +69,10 @@ def index_page(path, post):
     return flask.render_template('index.html',
                                  posts=all_posts,
                                  truncate=should_truncate)
+@default_view.route('/edit_post')
+def edit_post():
+  return flask.render_template('edit_post.html')
+
+@default_view.route('/view_all')
+def view_all():
+  return flask.render_template('view_all.html')
