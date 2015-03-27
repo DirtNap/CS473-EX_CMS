@@ -106,3 +106,83 @@ form input#password {
     font-size: 14px;
     color:white;	
 }
+
+.edit_post {
+	width: 70%;
+	height: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+}
+ #letterbucket_logo {
+ 	float: right;
+ 	width: 250px;
+ 	margin-top: 20px;
+ }
+
+ .menu {
+ 	width: 90%;
+ 	margin-right: auto;
+ 	margin-left: auto;
+ 	background-color: white;
+ }
+
+.menu li {
+    display: inline;
+    margin-right: 5%;
+    margin-left: 10%;
+}
+
+.menu a {
+	text-decoration: none;
+	color: black;
+	font-weight: 800;
+
+}
+
+#post_title {
+  width: 300px;
+  background-color: #efefef;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+  float: left;
+
+}
+
+#post_input {
+	width: 90%;
+	background-color: #efefef;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+  float: left;
+  height: 200px;
+  margin-top: 20px;
+
+}
+
+.publish {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;
+    float: right;
+    display: inline;
+}
+
+.attachment {
+	float: left;
+	margin-right: 20px;
+}
