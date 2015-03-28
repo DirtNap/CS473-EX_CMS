@@ -55,7 +55,6 @@ def create_application(config_file=None, config_object=None):
 @default_view.route('/<path>', defaults={'post': 0})
 @default_view.route('/<path>/<int:post>')
 def index_page(path, post):
-    print 'path: %s, post: %d' % (path, post)
     published = posts.PostStatus('Published')
     query = posts.Post.query.filter_by(status_id=published.id)
     if path:
