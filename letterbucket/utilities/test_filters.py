@@ -14,5 +14,6 @@ class FiltersTest(unittest.TestCase):
         self.assertEqual(test_datetime_eastern, filters.Filters.DateTimeZone(test_datetime),
                          'My datetime should be the same as when filtered.')
         test_datetime_pacific = timezone('US/Pacific').localize(test_datetime)
-        self.assertNotEqual(test_datetime_pacific, filters.Filters.DateTimeZone(test_datetime),
+        self.assertEqual(test_datetime_pacific,
+                         filters.Filters.DateTimeZone(test_datetime, 'US/Pacific'),
                          'My datetime should be the same as when filtered.')

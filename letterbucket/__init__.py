@@ -15,6 +15,7 @@ default_view = flask.Blueprint('letterbucket', __name__,
 from letterbucket.account import view as account_view
 from letterbucket.content import view as content_view
 from letterbucket.content import posts, blogs
+from letterbucket.utilities.filters import Filters
 
 def create_application(config_file=None, config_object=None):
     """Factory for creating applications
@@ -37,6 +38,9 @@ def create_application(config_file=None, config_object=None):
         app.config.from_object(config_object)
     db.init_app(app)
     login_manager.init_app(app)
+    for attr in dir(Filters):
+        if not attr.startswith('_'):
+            app.jinja_env.filters[attr] = getattr(Filters, attr)
     with app.app_context():
         # put the database handle in the global session
         flask.g.db_handle = db
