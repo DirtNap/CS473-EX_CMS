@@ -131,4 +131,5 @@ class PostModelTest(testing.DbModelTestCase):
             self.assertEqual(test_post_title, test_existing_post.title,
                              'Title was stored in the db.')
             self.assertEqual(test_post_body, test_existing_post.body,
-                             'Body was stored in the db.') 
+                             'Body was stored in the db.')
+ 
