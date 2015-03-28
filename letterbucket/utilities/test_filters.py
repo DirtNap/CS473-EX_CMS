@@ -2,7 +2,7 @@ import unittest
 
 from datetime import datetime
 from pytz import timezone
-from ..content import filters
+import filters
 
 class FiltersTest(unittest.TestCase):
 
