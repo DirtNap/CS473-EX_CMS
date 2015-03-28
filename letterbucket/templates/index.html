@@ -2,10 +2,31 @@
 
 {% block content %}
 <div class="display_region">
+<div class="head">
+<img class="viewpostslogo" src="static/images/letterbucket_logo.png">
+<div class="nav_menu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="view_all.html">Browse Articles</a></li>
+    <li>Your Posts
+      <ul>
+        <li> All Posts</li>
+        <li>Add New</li>
+      </ul>
+    </li>
+    <li>User
+      <ul>
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+</div>
 {% for post in posts %}
 {% set post_uri = '/' ~ post.blog.path ~ '/' ~ post.id %}
 {% set read_more_link = '&nbsp;...<a href="' ~ post_uri ~ '">Read More</a>' %}
-<table>
+<table class="postprev">
   <tr><th><a href="{{ post_uri }}">{{ post.title }}</a></th>
     <th>Posted by {{ post.blog.owner.name }} in <a href="/{{ post.blog.path }}">{{ post.blog.name }}</a></th>
     <th>{{ post.pub_date}}</th>
