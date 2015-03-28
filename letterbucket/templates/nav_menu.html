@@ -1,0 +1,25 @@
+<div class="menu">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/">Browse Articles</a></li>
+    <li>Your Posts
+      <ul>
+        <li>All Posts</li>
+        <li>Add New</li>
+      </ul>
+    </li>
+    <li>User
+      {% if current_user.is_authenticated() %}
+      <ul>
+        <li><a href="/profile">Settings</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+      {% else %}
+      <ul>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/create">Create Account</a></li>
+      </ul>
+      {% endif %}
+    </li>
+    </ul>
+</div>
