@@ -3,7 +3,7 @@ html {
 }
 
 div.main_wrapper{
-	background-image: url('https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09');
+	background-image: url('/images/background_desk.jpg');
 	background-repeat: no-repeat;
 	height: 900px;
 	margin-top: -50px;
@@ -47,15 +47,21 @@ div.create_form {
 	background-color: #fff;
 	opacity: .75;
 	width: 100%;
-
 }
 
+div.display_region {
+	margin-right: 500px; 
+	margin-top: -375px;
+	height: 100%;
+	background-color: #fff;
+	width: 100%;
+        overflow: auto;
+}
 
 form {
 	padding-top: 25px;
 	margin-right: auto;
 	margin-left: 400px;
-	
 }
 
 form label {
@@ -98,4 +104,175 @@ form input#password {
   	padding: 5px;
     font-size: 14px;
     color:white;	
+}
+
+.edit_post {
+	width: 70%;
+	height: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+}
+ #letterbucket_logo {
+ 	float: right;
+ 	width: 250px;
+ 	margin-top: 20px;
+ }
+
+ .menu {
+ 	width: 90%;
+ 	margin-right: auto;
+ 	margin-left: auto;
+ 	background-color: white;
+ }
+
+.menu li {
+    display: inline;
+    margin-right: 5%;
+    margin-left: 10%;
+}
+
+.menu a {
+	text-decoration: none;
+	color: black;
+	font-weight: 800;
+
+}
+
+#post_title {
+  width: 300px;
+  background-color: #efefef;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+  float: left;
+
+}
+
+#post_input {
+	width: 90%;
+	background-color: #efefef;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  border: 1px solid #cccccc;
+  padding: 5px;
+  font-size: 1.1em;
+  float: left;
+  height: 200px;
+  margin-top: 20px;
+
+}
+
+.publish {
+	margin-top: 10px;
+	background-color: #373737;
+  		-webkit-border-radius: 3px;
+     	-moz-border-radius: 3px;
+    border-radius: 18px;
+  	border: 1px solid #cccccc;
+  	padding: 5px;
+    font-size: 14px;
+    color:white;
+    float: right;
+    display: inline;
+}
+
+.attachment {
+	float: left;
+	margin-right: 20px;
+}
+
+.profile {
+	margin-left:25%;
+	background-color: white;
+	padding: 30px;
+	width: 50%;
+	font-weight: 800;
+}
+
+.center{
+	text-align: center;
+}
+
+.postprev {
+	margin-top: 40px;
+	float: right;
+	display: inline-block;
+	margin-right: 10%;
+	margin-left:10%;
+}
+
+.viewpostslogo {
+	width: 90px;
+	margin: 60px;
+	float: left;
+}
+div.head{
+	display: inline;
+	margin-left: 50px;
+
+}
+.nav_menu li {
+    display: inline;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.nav_menu a {
+	text-decoration: none;
+	color: black;
+	font-weight: 800;
+
+}
+.nav_menu{
+	margin-top: 60px;
+}
+
+ul li {
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+
+}
+
+ul li ul {
+  padding: 0;
+  position: absolute;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+}
+ul li ul li { 
+  background: white; 
+  display: block; 
+  color: #555;
+  text-shadow: 0 -1px 0 #000;
+}
+ul li ul li:hover { background: #efefef; }
+ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  height: 20px;
+
 }

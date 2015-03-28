@@ -1,7 +1,27 @@
 {% extends "base_page.html" %}
 {% block page_title %}My Account{% endblock page_title %}
 {% block content %}
-<p>Welcome Back, {{ current_user.username }}</p>
+<div class="menu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="view_all.html">Browse Articles</a></li>
+    <li>Your Posts
+      <ul>
+        <li> All Posts</li>
+        <li>Add New</li>
+      </ul>
+    </li>
+    <li>User
+      <ul>
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+
+<div class="profile">
+<p class="center">Welcome Back, {{ current_user.username }}</p>
 <table>
   <tr>
     <td>Real Name</td><td>{{ current_user.name }}</td>
@@ -18,4 +38,6 @@
   <tr>
     <td>Password</td><td><a href="{{ reset_link }}">Reset Password</a></td>
   </tr>
+  </table>
+  </div>
 {% endblock content %}
