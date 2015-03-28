@@ -11,7 +11,7 @@
 <table class="postprev">
   <tr><th><a href="{{ post_uri }}">{{ post.title }}</a></th>
     <th>Posted by {{ post.blog.owner.name }} in <a href="/{{ post.blog.path }}">{{ post.blog.name }}</a></th>
-    <th>{{ post.pub_date}}</th>
+    <th>{{ post.pub_date|datetimeformat('US/Eastern') }}</th>
   </tr>
   <tr>
     {% if truncate %}
