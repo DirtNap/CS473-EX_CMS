@@ -51,7 +51,7 @@ def create_application(config_file=None, config_object=None):
 @default_view.route('/<path>', defaults={'post': 0})
 @default_view.route('/<path>/<int:post>')
 def index_page(path, post):
-    """Default template.  This is only a placeholder."""
+    print 'path: %s, post: %d' % (path, post)
     published = posts.PostStatus('Published')
     query = posts.Post.query.filter_by(status_id=published.id)
     if path:
@@ -61,7 +61,7 @@ def index_page(path, post):
         query = query.filter_by(blog_id=target_blog.id)
     if post > 0:
         query = query.filter_by(id=post)
-    all_posts = query.order_by(posts.Post.pub_date.desc()).all()
+    all_posts = query.order_by(posts.Post.pub_date.desc()).limit(100).all()
     if not all_posts:
         flask.abort(404)
     should_truncate = (post == 0)

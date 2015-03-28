@@ -264,7 +264,7 @@ ul li ul {
 }
 ul li ul li { 
   background: white; 
-  display: block; 
+  display: inline-block; 
   color: #555;
   text-shadow: 0 -1px 0 #000;
 }
