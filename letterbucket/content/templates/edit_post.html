@@ -2,11 +2,21 @@
 {% block page_title %}Edit Post{% endblock page_title %}
 {% block content %}
   <div class="menu">
-  <ul>
+   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="view_all.html">Browse Articles</a></li>
-    <li><a href="#">Your Posts</a></li>
-    <li id="user"><a href="#">User</a></li>
+    <li>Your Posts
+      <ul>
+        <li> All Posts</li>
+        <li>Add New</li>
+      </ul>
+    </li>
+    <li>User
+      <ul>
+        <li>Settings</li>
+        <li>Logout</li>
+      </ul>
+    </li>
     </ul>
   </div>
    <div class="edit_post">
@@ -20,3 +30,4 @@
    </form>
    </div>
 {% endblock content %}
+
