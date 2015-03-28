@@ -50,6 +50,52 @@ class PostStatusModelTest(testing.DbModelTestCase):
             self.assertEqual(test_post_status, posts.PostStatus.GetByCode(test_status_code),
                              'Retrieve by code should match.')
 
+
+
+class PostModelTest(testing.DbModelTestCase):
+
+    def setUp(self):
+        self.config_class = test.MemoryConfig
+        self.app = create_application(config_object=self.config_class)
+        with self.app.test_request_context():
+            db.create_all()
+        self.fake_data = faker.Faker()
+
+    def testNewPost(self):
+        with self.app.test_request_context():
+            self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
+            test_user_username = self.fake_data.user_name()
+            test_user_name = self.fake_data.name()
+            test_user_email = self.fake_data.email()
+            test_user_password = self.fake_data.word()
+
+            new_user = users.User(test_user_username,
+                                  test_user_email,
+                                  test_user_name,
+                                  test_user_password)
+            new_user.Persist()
+
+            self.assertEqual([], blogs.Blog.query.all(), 'Should be no blogs in the db.')
+            test_blog_path = self.fake_data.word()
+            test_blog_name = self.fake_data.name()
+            new_blog = blogs.Blog(test_blog_path,
+                                  test_blog_name,
+                                  new_user)
+            new_blog.Persist()
+
+            self.assertEqual([], posts.Post.query.all(), 'Should be no posts in the db.')            
+            test_new_posts = []
+            for x in range(0, 10):
+                test_post_title = self.fake_data.word()
+                test_post_body = self.fake_data.text()
+                test_new_post = posts.Post(new_blog,
+                                           test_post_title,
+                                           test_post_body)
+                test_new_posts.append(test_new_post)
+
+            self.assertEqual([test_new_posts], [posts.Post.query.all()],
+                             'Should find all my newly created posts.')        
+
     def testGetPostById(self):
         with self.app.test_request_context():
             self.assertEqual([], users.User.query.all(), 'Should be no users in the db.')
@@ -75,10 +121,14 @@ class PostStatusModelTest(testing.DbModelTestCase):
             self.assertEqual([], posts.Post.query.all(), 'Should be no posts in the db.')
             test_post_title = self.fake_data.word()
             test_post_body = self.fake_data.text()
-            new_post = posts.Post(new_blog,
-                                  test_post_title,
-                                  test_post_body)
+            test_new_post = posts.Post(new_blog,
+                                       test_post_title,
+                                       test_post_body)
 
-class PostModelTest(testing.DbModelTestCase):
-    # TODO(bryanxcole): Implement tests for the Post Model
-    pass
+            test_existing_post = posts.Post.GetById(test_new_post.id)
+            self.assertEqual(test_new_post, test_existing_post,
+                             'Retrieve by id should match.')
+            self.assertEqual(test_post_title, test_existing_post.title,
+                             'Title was stored in the db.')
+            self.assertEqual(test_post_body, test_existing_post.body,
+                             'Body was stored in the db.') 
