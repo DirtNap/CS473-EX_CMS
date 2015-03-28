@@ -116,7 +116,7 @@ class Post(db.Model):
           self.status = status
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def __repr__(self):
-        return '%s: %s (%s)' % (self.name, self.path, self.owner)
+        return '%s: %s (%s)' % (self.title, self.body, self.blog)
